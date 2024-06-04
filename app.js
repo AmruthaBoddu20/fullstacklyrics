@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios'); // Add axios for making API requests
+const axios = require('axios'); 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -31,11 +31,11 @@ app.get('/lyrics', (req, res) => {
 app.post('/lyrics', async (req, res) => {
     const { artist, title } = req.body;
 
-    console.log(`Received form data: Artist - ${artist}, Title - ${title}`); // Corrected syntax
+    console.log(`Received form data: Artist - ${artist}, Title - ${title}`); 
 
     try {
         // Fetch lyrics from Lyrics.ovh API
-        const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${title}`); // Corrected URL format
+        const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${title}`); 
         const lyrics = response.data.lyrics;
 
         res.render('lyrics', { lyrics: { artist, title, lyrics } });
@@ -46,5 +46,5 @@ app.post('/lyrics', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`); // Corrected syntax
+    console.log(`Server is running on http://localhost:${PORT}`); 
 });
